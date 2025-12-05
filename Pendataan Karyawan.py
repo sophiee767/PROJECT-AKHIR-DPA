@@ -72,5 +72,66 @@ def tambah_data():
 
     print("Data berhasil ditambahkan!")
 
+def tampilkan_data():
+    print("\n=== Data Karyawan ===")
+    if len(data_karyawan) == 0:
+        print("Belum ada data.")
+        return
+
+    for k in data_karyawan:
+        print(f"ID: {k['id']} |Nama: {k['nama']} |Jabatan: {k['jabatan']} |Gaji: {k['gaji']}")
+
+def cari_data():
+    print("\n=== Cari Data Karyawan ===")
+    kata = input("Masukkan kata kunci (nama/jabatan): ").lower()
+
+    hasil = []
+    for k in data_karyawan:
+        if kata in k["nama"].lower() or kata in k["jabatan"].lower():
+            hasil.append(k)
+
+    if len(hasil) == 0:
+        print("Data tidak ditemukan.")
+    else:
+        print(f" Ditemukan {len(hasil)} data:")
+        for k in hasil:
+            print(f"- {k['id']} | {k['nama']} | {k['jabatan']} | {k['gaji']}")
+
+def edit_data():
+    print("\n=== Edit Data Karyawan ===")
+    id_cari = input("Masukkan ID yang ingin diedit: ")
+
+    for k in data_karyawan:
+        if k["id"] == id_cari:
+            print("Data ditemukan. Kosongkan jika tidak ingin mengubah.")
+            nama_baru = input(f"Nama baru ({k['nama']}): ")
+            jabatan_baru = input(f"Jabatan baru ({k['jabatan']}): ")
+            jabatan_ubah = jabatan_baru
+
+            if jabatan_ubah.upper() == "CEO":
+                gaji_baru = 25000000
+            elif jabatan_ubah.title() == "Manajer":
+                gaji_baru = 12000000
+            elif jabatan_ubah.title() == "Supervisor":
+                gaji_baru = 8000000
+            elif jabatan_ubah.title() == "Staf":
+                gaji_baru = 4500000
+            else:
+                gaji_baru = k["gaji"]
+            
+            if nama_baru != "":
+                k["nama"] = nama_baru
+            if jabatan_baru != "":
+                k["jabatan"] = jabatan_baru
+            if gaji_baru != "":
+                k["gaji"] = gaji_baru
+        
+            print("Data berhasil diperbarui!")
+            return
+
+    print("ID tidak ditemukan.")
+
+
+
 
 
