@@ -21,7 +21,8 @@ def simpan_ke_file():
                 baris = f"{k['id]} | {k['nama']} | {k['jabatan'}] | {k['gaji'}] \n"
                 f.write(baris)
     except:
-        print("Gagal menyimpan ke file")
+        print("Gagal menyimpan ke file"
+
 
 def muat_dari_file():
     try:
@@ -30,15 +31,16 @@ def muat_dari_file():
                 if baris == "":
                     continue
                 id, nama, jabatan, gaji = baris.strip().split("|")
-
+                
                 data_karyawan.append({
                     "id": id,
                     "nama": nama,
-                    "jabatan" : jabatan,
-                    "gaji" : gaji
+                    "jabatan": jabatan,
+                    "gaji": gaji
                 })
     except FileNotFoundError:
-        pass
+        pass 
+
 
 def tambah_data():
     print("\n=== Tambah Data Karyawan ===")
@@ -69,3 +71,6 @@ def tambah_data():
     })
 
     print("Data berhasil ditambahkan!")
+
+
+
