@@ -133,5 +133,52 @@ def edit_data():
 
 
 
+def hapus_data():
+    print("\n=== Hapus Data Karyawan ===")
+    id_cari = input("Masukkan ID yang ingin dihapus: ")
+
+    for k in data_karyawan:
+        if k["id"] == id_cari:
+            data_karyawan.remove(k)
+            print("✔ Data berhasil dihapus!")
+            return
+
+    print("ID tidak ditemukan.")
 
 
+
+def menu():
+    muat_dari_file()  
+
+    while True:
+        print("\n===== Pendataan Karyawan =====")
+        print("1. Tambah Data")
+        print("2. Tampilkan Data")
+        print("3. Cari Data")
+        print("4. Edit Data")
+        print("5. Hapus Data")
+        print("6. Simpan ke File")
+        print("0. Keluar")
+
+        pilihan = input("Pilih menu: ")
+
+        if pilihan == "1":
+            tambah_data()
+        elif pilihan == "2":
+            tampilkan_data()
+        elif pilihan == "3":
+            cari_data()
+        elif pilihan == "4":
+            edit_data()
+        elif pilihan == "5":
+            hapus_data()
+        elif pilihan == "6":
+            simpan_ke_file()
+            print("✔ Data disimpan ke file!")
+        elif pilihan == "0":
+            print("Program selesai. Terima kasih! hehe.")
+            break
+        else:
+            print("Pilihan tidak valid!")
+
+menu()
